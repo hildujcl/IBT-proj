@@ -1,0 +1,10 @@
+Samuel     ETB 500.00
+Liya       ETB 400.00
+Helen      ETB 350.00
+John       ETB 300.00
+Marta      ETB 280.00
+Sara       ETB 250.00
+Nahom      ETB 220.00
+Ruth       ETB 180.00
+Dawit      ETB 150.00
+Abel       ETB 120.00
