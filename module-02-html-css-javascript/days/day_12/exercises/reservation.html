@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="blue light" />
+    <title>Reservation</title>
+  </head>
+  <body>
+    <from action="/topup" methods="post"></from>
+    <label for="amt">Amount(ETB)</label>
+    <input id="amt" name="amt" type="number" min="10" max="5000" required />
+    <input
+      id="phone"
+      name="phone"
+      type="tel"
+      required
+      placeholder="+251 988 999 087"
+    />
+    <button type="submit">reserve</button>
+    <!-- u can use thia comment type in your keyboarEd CTRL + / -->
+    <input type="radio" name="seat" value="indoor" /> Indoor
+    <!-- many on/off -->
+    <input type="checkbox" name="wifi" />
+    <!-- pick from a list -->
+    <select name="branch">
+      <option>Bole</option>
+      <option>Kazanchis</option>
+    </select>
+    <fieldset>
+      <legend>Your details</legend>
+      <label for="name">Full name</label>
+      <input id="name" name="name" required />
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" type="tel" placeholder="0911..." />
+    </fieldset>
+    <fieldset>
+      <legend>Booking</legend>
+      <!-- guests, date, seating -->
+    </fieldset>
+    <table>
+      <caption>
+        Awash Bank rates
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Currency</th>
+          <th scope="col">Buy (ETB)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">USD</th>
+          <td>57.20</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

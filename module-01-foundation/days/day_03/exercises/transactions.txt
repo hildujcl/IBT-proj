@@ -1,0 +1,10 @@
+Abel,120
+Sara,250
+John,300
+Liya,400
+Dawit,150
+Marta,280
+Samuel,500
+Helen,350
+Nahom,220
+Ruth,180
