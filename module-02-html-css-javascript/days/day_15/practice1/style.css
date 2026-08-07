@@ -1,0 +1,123 @@
+/* Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f4f4;
+  padding: 30px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* =====================
+   Phone (Default)
+===================== */
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.box {
+  height: 180px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+
+  border-radius: 12px;
+
+  transition: 0.4s;
+}
+
+/* Colors */
+
+.red {
+  background: #e53935;
+}
+
+.blue {
+  background: #1e88e5;
+}
+
+.green {
+  background: #43a047;
+}
+
+/* Animation */
+
+.box:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* =====================
+   Small Devices (sm)
+===================== */
+
+@media (min-width: 640px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =====================
+   Tablets (md)
+===================== */
+
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .box {
+    height: 220px;
+  }
+}
+
+/* =====================
+   Laptops (lg)
+===================== */
+
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .box {
+    height: 250px;
+  }
+}
+
+/* =====================
+   Large Screens (xl)
+===================== */
+
+@media (min-width: 1280px) {
+  body {
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .container {
+    gap: 30px;
+  }
+
+  .box {
+    height: 280px;
+    font-size: 34px;
+  }
+}
