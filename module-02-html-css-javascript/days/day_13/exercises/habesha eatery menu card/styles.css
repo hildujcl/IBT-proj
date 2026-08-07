@@ -1,0 +1,89 @@
+:root {
+  --primary-color: #1b5e20;
+  --accent-color: gold;
+  --border-color: #cccccc;
+  --text-color: #333333;
+  --background-color: #f4f4f4;
+  --card-color: white;
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Menu Card */
+.menu-card {
+  width: 350px;
+  background-color: var(--card-color);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-top: 8px solid var(--accent-color);
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+
+  /* Sticky Card */
+  position: sticky;
+  top: 20px;
+
+  /* Hover animation */
+  transition: transform 0.3s ease;
+}
+
+/* Heading */
+.menu-card h2 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+/* Description */
+.description {
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+/* Ingredients */
+.ingredients {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.ingredients li {
+  padding: 8px;
+}
+
+/* Zebra Stripe */
+.ingredients li:nth-child(even) {
+  background-color: #eeeeee;
+}
+
+/* Price */
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Pseudo-element */
+.price::before {
+  content: "ETB ";
+}
+
+/* Pseudo-class */
+.menu-card:hover {
+  transform: scale(1.03);
+  transition: 0.3s;
+}
