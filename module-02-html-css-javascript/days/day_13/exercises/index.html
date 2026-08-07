@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 13 CSS Practice</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Day 13 CSS Exercises</h1>
+
+    <!-- Exercise 1 -->
+    <section>
+      <h2>1. CSS Variables(:root)</h2>
+      <button class="btn">Book Flight</button>
+    </section>
+
+    <hr />
+
+    <!-- Exercise 2 -->
+    <section>
+      <h2>2. Box Model</h2>
+
+      <div class="card content-box">
+        <h3>Content-Box</h3>
+        <p>
+          Width = 300px<br />
+          Padding = 24px<br />
+          Border = 2px<br /><br />
+
+          Total Width = 352px
+        </p>
+      </div>
+
+      <div class="card border-box">
+        <h3>Border-Box</h3>
+        <p>
+          Width remains exactly 300px because padding and border are included.
+        </p>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- Exercise 3 -->
+    <section>
+      <h2>3. CSS Specificity</h2>
+
+      <p id="special" class="text">Ethiopian Airlines</p>
+
+      <div class="specificity">
+        <h3>Specificity Scores</h3>
+
+        <ul>
+          <li>Element (p) = 0,0,1</li>
+          <li>Class (.text) = 0,1,0</li>
+          <li>ID (#special) = 1,0,0 ✅ Winner</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- Exercise 4 -->
+    <section>
+      <h2>4. Ethiopian Airlines Schedule</h2>
+
+      <table>
+        <tr>
+          <th>Flight</th>
+          <th>Destination</th>
+          <th>Departure</th>
+        </tr>
+
+        <tr>
+          <td>ET101</td>
+          <td>Addis Ababa</td>
+          <td>08:00 AM</td>
+        </tr>
+
+        <tr>
+          <td>ET202</td>
+          <td>Nairobi</td>
+          <td>10:30 AM</td>
+        </tr>
+
+        <tr>
+          <td>ET303</td>
+          <td>Dubai</td>
+          <td>01:00 PM</td>
+        </tr>
+
+        <tr>
+          <td>ET404</td>
+          <td>London</td>
+          <td>04:45 PM</td>
+        </tr>
+
+        <tr>
+          <td>ET505</td>
+          <td>Paris</td>
+          <td>07:20 PM</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr />
+
+    <!-- Exercise 5 -->
+    <section>
+      <h2>5. Color Palette</h2>
+
+      <div class="palette">
+        <div class="color blue">
+          <h3>Blue</h3>
+          <p>Hex: #0066CC</p>
+          <p>RGB: rgb(0,102,204)</p>
+          <p>HSL: hsl(210,100%,40%)</p>
+        </div>
+
+        <div class="color orange">
+          <h3>Orange</h3>
+          <p>Hex: #FF9900</p>
+          <p>RGB: rgb(255,153,0)</p>
+          <p>HSL: hsl(36,100%,50%)</p>
+        </div>
+
+        <div class="color green">
+          <h3>Green</h3>
+          <p>Hex: #078930</p>
+          <p>RGB: rgb(7,137,48)</p>
+          <p>HSL: hsl(139,90%,28%)</p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
