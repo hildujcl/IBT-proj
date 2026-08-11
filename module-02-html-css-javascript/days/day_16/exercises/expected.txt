@@ -1,0 +1,7 @@
+
+Bill: 500.00 ETB
+Tip: 50.00 ETB
+Service fee: 5.00 ETB
+Total: 555.00 ETB
+Each person pays: 138.75 ETB
+
