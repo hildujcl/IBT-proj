@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Addis Market</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 id="firstheading">Addis Market</h1>
+
+      <p>Select the products you want:</p>
+
+      <ul id="list">
+        <li class="item" data-id="1">
+          <label>
+            <input type="checkbox" class="product" value="50" />
+            Injera - 50 ETB
+          </label>
+        </li>
+
+        <li class="item" data-id="2">
+          <label>
+            <input type="checkbox" class="product" value="100" />
+            Shiro - 100 ETB
+          </label>
+        </li>
+
+        <li class="item" data-id="3">
+          <label>
+            <input type="checkbox" class="product" value="250" />
+            Tibs - 250 ETB
+          </label>
+        </li>
+
+        <li class="item" data-id="4">
+          <label>
+            <input type="checkbox" class="product" value="80" />
+            Coffee - 80 ETB
+          </label>
+        </li>
+      </ul>
+
+      <label for="qty">Quantity:</label>
+      <input type="number" id="qty" value="1" min="1" />
+
+      <button id="showBtn">Calculate Order</button>
+
+      <div id="output"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
