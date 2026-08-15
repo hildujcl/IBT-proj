@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validated Signup Form</title>
+  </head>
+  <body>
+    <h1>Signup Form</h1>
+
+    <form id="signupForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" />
+
+      <br /><br />
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" />
+
+      <br /><br />
+
+      <button type="submit">Sign Up</button>
+
+      <p id="error" aria-live="polite"></p>
+    </form>
+
+    <p id="count"></p>
+
+    <script src="app.js"></script>
+  </body>
+</html>
