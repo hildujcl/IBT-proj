@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON and LocalStorage</title>
+  </head>
+
+  <body>
+    <h2>Order Information</h2>
+
+    <label for="choose">Choose:</label>
+
+    <select id="choose">
+      <option value="name">Name</option>
+      <option value="city">City</option>
+      <option value="cart">Food</option>
+      <option value="total">Total</option>
+      <option value="member">Member</option>
+    </select>
+
+    <button id="saveBtn">Save Order</button>
+    <button id="removeBtn">Remove</button>
+
+    <div>
+      <span>Selected item:</span>
+    </div>
+
+    <p id="result"></p>
+
+    <script src="script.js"></script>
+  </body>
+</html>
