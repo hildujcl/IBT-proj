@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BirrWatch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <h1
+      class="bg-pink-400 text-white p-6 w-40 rounded-xl border-2 border-cyan-400 shadow-inner shadow-cyan-400/50"
+    >
+      Birr Watch
+    </h1>
+
+    <p id="status">Loading rates...</p>
+
+    <form
+      id="convert-form"
+      class="bg-gray-200 text-black p-1 w-42 rounded-xl border-2 border-black-400 shadow-cyan-100/50"
+    >
+      <input id="amount" type="number" value="100" />
+      <select id="currency"></select>
+      <button
+        type="submit"
+        class="bg-pink-500 text-white px-6 py-3 rounded-lg animate-pulse hover:animate-none transition-all"
+      >
+        Convert
+      </button>
+    </form>
+
+    <p id="result"></p>
+
+    <button
+      id="watch"
+      type="button"
+      class="bg-pink-200 w-20 rounded-xl border-1"
+    >
+      Add to Watchlist
+    </button>
+
+    <h2>Watchlist</h2>
+    <ul
+      id="watchlist"
+      class="bg-purple-200 text-black px-6 py-3 w-40 rounded-lg hover:animate-bounce transition-all cursor-pointer"
+    ></ul>
+
+    <script src="app.js"></script>
+  </body>
+</html>
