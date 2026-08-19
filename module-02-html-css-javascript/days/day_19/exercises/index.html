@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Exercises</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <h1 id="title">Original Heading</h1>
+
+    <!-- Exercise 1 -->
+    <section>
+      <h2>change</h2>
+
+      <button id="change-title">Change Heading</button>
+    </section>
+
+    <!-- Exercise 2 -->
+    <section>
+      <h2>Ethiopian Cities</h2>
+
+      <ul id="city-list"></ul>
+    </section>
+
+    <!-- Exercise 3 -->
+    <section>
+      <h2>Event Bubbling</h2>
+
+      <div id="container">
+        <button id="click-button">Click Me</button>
+      </div>
+    </section>
+
+    <!-- Exercise 4 -->
+    <section>
+      <h2>Delete with Event Delegation</h2>
+
+      <ul id="item-list">
+        <li>
+          Injera
+          <button class="delete">Delete</button>
+        </li>
+
+        <li>
+          Shiro
+          <button class="delete">Delete</button>
+        </li>
+
+        <li>
+          Tibs
+          <button class="delete">Delete</button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Exercise 5 -->
+    <section>
+      <h2>Add Items</h2>
+
+      <form id="item-form">
+        <input type="text" id="item-input" placeholder="Enter an item" />
+
+        <button type="submit">Add Item</button>
+      </form>
+
+      <ul id="new-list"></ul>
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+</html>
