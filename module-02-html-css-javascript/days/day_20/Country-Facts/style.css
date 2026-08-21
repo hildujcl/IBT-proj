@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff7fb;
+  color: #171717;
+}
+
+.container {
+  width: 90%;
+  max-width: 700px;
+  margin: 50px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  text-align: center;
+  color: #db2777;
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 36px;
+}
+
+#countryForm {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+#countryInput {
+  flex: 1;
+  padding: 12px 15px;
+  border: 2px solid #f3d5e4;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+#countryInput:focus {
+  border-color: #ec4899;
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.12);
+}
+
+#countryForm button {
+  padding: 12px 22px;
+  background: #ec4899;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#countryForm button:hover {
+  background: #db2777;
+}
+
+#facts {
+  text-align: left;
+}
+
+#facts h2 {
+  text-align: center;
+  color: #be185d;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.flag {
+  display: block;
+  width: 220px;
+  max-height: 150px;
+  object-fit: contain;
+  margin: 0 auto 25px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.fact {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: #fff1f7;
+  border-radius: 8px;
+  border-left: 4px solid #ec4899;
+}
+
+.fact strong {
+  color: #be185d;
+}
+
+.fact span {
+  text-align: right;
+}
+
+.error {
+  padding: 15px;
+  background: #fee2e2;
+  color: #dc2626;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 94%;
+    margin: 25px auto;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  #countryForm {
+    flex-direction: column;
+  }
+
+  #countryForm button {
+    width: 100%;
+  }
+
+  .flag {
+    width: 180px;
+  }
+
+  .fact {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .fact span {
+    text-align: left;
+  }
+}

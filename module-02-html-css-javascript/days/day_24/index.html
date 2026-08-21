@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Addis Eats</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">🍴 Addis Eats</div>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#cart">
+          Cart 🛒
+          <span id="cart-count">0</span>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="home" class="hero">
+        <div>
+          <h1>Delicious Ethiopian Food 💗</h1>
+
+          <p>Discover your favorite Ethiopian dishes in one place.</p>
+
+          <a href="#menu" class="hero-btn"> Explore Menu </a>
+        </div>
+      </section>
+
+      <!-- MENU -->
+      <section id="menu" class="menu-section">
+        <h2>Our Menu</h2>
+
+        <p class="section-text">Choose something delicious today!</p>
+
+        <!-- SEARCH AND FILTER -->
+        <div class="controls">
+          <input
+            type="text"
+            id="search"
+            placeholder="🔎 Search food..."
+            aria-label="Search food"
+          />
+
+          <select id="category" aria-label="Filter by category">
+            <option value="All">All Categories</option>
+
+            <option value="Breakfast">Breakfast</option>
+
+            <option value="Lunch">Lunch</option>
+
+            <option value="Dinner">Dinner</option>
+
+            <option value="Drinks">Drinks</option>
+          </select>
+        </div>
+
+        <!-- MENU ITEMS -->
+        <div id="menu-container" class="menu-container">
+          <p class="loading">Loading menu...</p>
+        </div>
+      </section>
+
+      <!-- CART -->
+      <section id="cart" class="cart-section">
+        <h2>🛒 Your Cart</h2>
+
+        <div id="cart-container">
+          <p class="empty-cart">Your cart is empty.</p>
+        </div>
+
+        <div class="cart-summary">
+          <h3>
+            Total:
+            <span id="cart-total">0</span>
+            ETB
+          </h3>
+
+          <button id="clear-cart">Clear Cart</button>
+        </div>
+      </section>
+
+      <!-- CHECKOUT -->
+      <section id="checkout" class="checkout-section">
+        <h2>💗 Checkout</h2>
+
+        <p class="section-text">Enter your information to place your order.</p>
+
+        <form id="checkout-form" novalidate>
+          <!-- NAME -->
+          <div class="form-group">
+            <label for="name"> Full Name </label>
+
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your full name"
+            />
+
+            <small id="name-error" class="error"></small>
+          </div>
+
+          <!-- PHONE -->
+          <div class="form-group">
+            <label for="phone"> Phone Number </label>
+
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="09XXXXXXXX"
+            />
+
+            <small id="phone-error" class="error"></small>
+          </div>
+
+          <!-- ORDER ERROR -->
+          <div id="checkout-error" class="checkout-error"></div>
+
+          <button type="submit" class="checkout-btn">Place Order 🍽️</button>
+        </form>
+
+        <!-- CONFIRMATION -->
+        <div id="confirmation" class="confirmation hidden"></div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2026 Addis Eats 💗 | Delicious Ethiopian Food</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

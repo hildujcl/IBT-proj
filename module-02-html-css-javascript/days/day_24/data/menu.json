@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Doro Wot",
+    "category": "Lunch",
+    "price": 250,
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": 2,
+    "name": "Kitfo",
+    "category": "Dinner",
+    "price": 350,
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": 3,
+    "name": "Firfir",
+    "category": "Breakfast",
+    "price": 120,
+    "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": 4,
+    "name": "Shiro Wot",
+    "category": "Lunch",
+    "price": 180,
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": 5,
+    "name": "Chechebsa",
+    "category": "Breakfast",
+    "price": 150,
+    "image": "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": 6,
+    "name": "Ethiopian Coffee",
+    "category": "Drinks",
+    "price": 80,
+    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80"
+  }
+]

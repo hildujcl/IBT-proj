@@ -1,0 +1,23 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #ef7ccf;
+  padding: 30px;
+}
+
+main {
+  max-width: 600px;
+  margin: auto;
+  background: rgb(251, 101, 218);
+  padding: 25px;
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: violet;
+}
+
+#output {
+  margin-top: 20px;
+}
