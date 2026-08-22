@@ -4,28 +4,28 @@
     "name": "Doro Wot",
     "category": "Lunch",
     "price": 250,
-    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+    "image": "images/dorowot.jpg"
   },
   {
     "id": 2,
     "name": "Kitfo",
     "category": "Dinner",
     "price": 350,
-    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+    "image": "images/kitfo.jpg"
   },
   {
     "id": 3,
     "name": "Firfir",
     "category": "Breakfast",
     "price": 120,
-    "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80"
+    "image": "images/firfir_tibs.jpg"
   },
   {
     "id": 4,
     "name": "Shiro Wot",
     "category": "Lunch",
     "price": 180,
-    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+    "image": "images/shiro.jpg"
   },
   {
     "id": 5,

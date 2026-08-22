@@ -1,57 +1,64 @@
-// ==============================
+// =====================================================
 // ADDIS EATS
-// ==============================
+// =====================================================
 
-// ==============================
+// =====================================================
 // CONSTANTS
-// ==============================
+// =====================================================
 
 const MENU_URL = "data/menu.json";
 
 const PHONE_REGEX = /^(09\d{8}|\+2519\d{8})$/;
 
+// =====================================================
+// LOCAL STORAGE
+// =====================================================
+
+const savedCart = localStorage.getItem("addisEatsCart");
+
 const state = {
   menu: [],
   search: "",
   category: "All",
-  cart: [],
+  cart: savedCart ? JSON.parse(savedCart) : [],
 };
 
-// ==============================
+// =====================================================
 // DOM ELEMENTS
-// ==============================
+// =====================================================
 
 const menuContainer = document.querySelector("#menu-container");
-
 const cartContainer = document.querySelector("#cart-container");
-
 const cartCount = document.querySelector("#cart-count");
-
+const sidebarCount = document.querySelector("#sidebar-count");
 const cartTotal = document.querySelector("#cart-total");
 
 const searchInput = document.querySelector("#search");
-
 const categorySelect = document.querySelector("#category");
 
 const clearCartButton = document.querySelector("#clear-cart");
 
 const checkoutForm = document.querySelector("#checkout-form");
-
 const nameInput = document.querySelector("#name");
-
 const phoneInput = document.querySelector("#phone");
 
 const nameError = document.querySelector("#name-error");
-
 const phoneError = document.querySelector("#phone-error");
-
 const checkoutError = document.querySelector("#checkout-error");
 
 const confirmation = document.querySelector("#confirmation");
 
-// ==============================
+// =====================================================
+// SAVE CART
+// =====================================================
+
+function saveCart() {
+  localStorage.setItem("addisEatsCart", JSON.stringify(state.cart));
+}
+
+// =====================================================
 // LOAD MENU
-// ==============================
+// =====================================================
 
 async function loadMenu() {
   try {
@@ -81,9 +88,9 @@ async function loadMenu() {
   }
 }
 
-// ==============================
-// GET FILTERED MENU
-// ==============================
+// =====================================================
+// FILTER MENU
+// =====================================================
 
 function getFilteredMenu() {
   const searchTerm = state.search.toLowerCase().trim();
@@ -98,23 +105,20 @@ function getFilteredMenu() {
   });
 }
 
-// ==============================
+// =====================================================
 // MAIN RENDER
-// ==============================
+// =====================================================
 
 function render() {
   renderMenu();
-
   renderCart();
 }
 
-// ==============================
+// =====================================================
 // RENDER MENU
-// ==============================
+// =====================================================
 
 function renderMenu() {
-  if (!menuContainer) return;
-
   const filteredMenu = getFilteredMenu();
 
   if (filteredMenu.length === 0) {
@@ -130,9 +134,9 @@ function renderMenu() {
   menuContainer.innerHTML = filteredMenu.map(createFoodCard).join("");
 }
 
-// ==============================
-// CREATE FOOD CARD
-// ==============================
+// =====================================================
+// FOOD CARD
+// =====================================================
 
 function createFoodCard(item) {
   return `
@@ -141,23 +145,29 @@ function createFoodCard(item) {
       <img
         src="${item.image}"
         alt="${item.name}"
+        loading="lazy"
       >
 
       <div class="food-info">
 
-        <h3>${item.name}</h3>
+        <h3>
+          ${item.name}
+        </h3>
 
-        <p>${item.category}</p>
+        <p>
+          ${item.category}
+        </p>
 
         <p class="price">
           ${item.price} ETB
         </p>
 
         <button
+          type="button"
           class="add-btn"
           data-id="${item.id}"
         >
-          Add to Cart 🛒
+          🛒 Add to Cart
         </button>
 
       </div>
@@ -166,18 +176,20 @@ function createFoodCard(item) {
   `;
 }
 
-// ==============================
+// =====================================================
 // ADD TO CART
-// ==============================
+// =====================================================
 
 function addToCart(id) {
   if (!id) return;
 
-  const food = state.menu.find((item) => item.id === id);
+  const food = state.menu.find((item) => Number(item.id) === Number(id));
 
   if (!food) return;
 
-  const existingItem = state.cart.find((item) => item.id === id);
+  const existingItem = state.cart.find(
+    (item) => Number(item.id) === Number(id),
+  );
 
   if (existingItem) {
     existingItem.quantity += 1;
@@ -188,36 +200,41 @@ function addToCart(id) {
     });
   }
 
+  // SAVE CART TO LOCAL STORAGE
+  saveCart();
+
   renderCart();
 }
 
-// ==============================
+// =====================================================
 // REMOVE FROM CART
-// ==============================
+// =====================================================
 
 function removeFromCart(id) {
   if (!id) return;
 
-  state.cart = state.cart.filter((item) => item.id !== id);
+  state.cart = state.cart.filter((item) => Number(item.id) !== Number(id));
+
+  // SAVE UPDATED CART
+  saveCart();
 
   renderCart();
 }
 
-// ==============================
+// =====================================================
 // RENDER CART
-// ==============================
+// =====================================================
 
 function renderCart() {
-  if (!cartContainer) return;
-
   if (state.cart.length === 0) {
     cartContainer.innerHTML = `
       <p class="empty-cart">
-        Your cart is empty 💗
+        No items added yet.
       </p>
     `;
 
     cartCount.textContent = "0";
+    sidebarCount.textContent = "0";
     cartTotal.textContent = "0";
 
     return;
@@ -226,49 +243,64 @@ function renderCart() {
   cartContainer.innerHTML = state.cart.map(createCartItem).join("");
 
   const total = calculateCartTotal();
-
-  const itemCount = calculateCartCount();
+  const count = calculateCartCount();
 
   cartTotal.textContent = total;
-
-  cartCount.textContent = itemCount;
+  cartCount.textContent = count;
+  sidebarCount.textContent = count;
 }
 
-// ==============================
+// =====================================================
 // CREATE CART ITEM
-// ==============================
+// =====================================================
 
 function createCartItem(item) {
   return `
     <div class="cart-item">
 
+      <img
+        src="${item.image}"
+        alt="${item.name}"
+      >
+
       <div>
-        <h3>${item.name}</h3>
+
+        <h3>
+          ${item.name}
+        </h3>
 
         <p>
-          ${item.quantity} ×
-          ${item.price} ETB
+          ${item.price} ETB ×
+          ${item.quantity}
         </p>
+
       </div>
 
-      <strong>
-        ${item.quantity * item.price} ETB
-      </strong>
+      <div>
 
-      <button
-        class="remove-btn"
-        data-remove="${item.id}"
-      >
-        Remove
-      </button>
+        <strong>
+          ${item.price * item.quantity}
+          ETB
+        </strong>
+
+        <button
+          type="button"
+          class="remove-btn"
+          data-remove="${item.id}"
+          aria-label="Remove ${item.name}"
+        >
+          ×
+        </button>
+
+      </div>
 
     </div>
   `;
 }
 
-// ==============================
+// =====================================================
 // CART TOTAL
-// ==============================
+// =====================================================
 
 function calculateCartTotal() {
   return state.cart.reduce(
@@ -277,27 +309,30 @@ function calculateCartTotal() {
   );
 }
 
-// ==============================
+// =====================================================
 // CART COUNT
-// ==============================
+// =====================================================
 
 function calculateCartCount() {
   return state.cart.reduce((count, item) => count + item.quantity, 0);
 }
 
-// ==============================
+// =====================================================
 // CLEAR CART
-// ==============================
+// =====================================================
 
 function clearCart() {
   state.cart = [];
 
+  // REMOVE CART FROM LOCAL STORAGE
+  localStorage.removeItem("addisEatsCart");
+
   renderCart();
 }
 
-// ==============================
+// =====================================================
 // VALIDATE NAME
-// ==============================
+// =====================================================
 
 function validateName() {
   const name = nameInput.value.trim();
@@ -317,9 +352,9 @@ function validateName() {
   return true;
 }
 
-// ==============================
+// =====================================================
 // VALIDATE PHONE
-// ==============================
+// =====================================================
 
 function validatePhone() {
   const phone = phoneInput.value.trim();
@@ -339,9 +374,9 @@ function validatePhone() {
   return true;
 }
 
-// ==============================
+// =====================================================
 // VALIDATE CART
-// ==============================
+// =====================================================
 
 function validateCart() {
   if (state.cart.length === 0) {
@@ -359,23 +394,21 @@ function validateCart() {
   return true;
 }
 
-// ==============================
+// =====================================================
 // VALIDATE CHECKOUT
-// ==============================
+// =====================================================
 
 function validateCheckout() {
   const validName = validateName();
-
   const validPhone = validatePhone();
-
   const validCart = validateCart();
 
   return validName && validPhone && validCart;
 }
 
-// ==============================
+// =====================================================
 // PLACE ORDER
-// ==============================
+// =====================================================
 
 function placeOrder() {
   if (!validateCheckout()) {
@@ -387,24 +420,31 @@ function placeOrder() {
   const total = calculateCartTotal();
 
   confirmation.innerHTML = `
-    <h3>🎉 Order Confirmed!</h3>
+    <h3>
+      🎉 Order Confirmed!
+    </h3>
 
     <p>
-      Thank you, ${customerName}!
+      Thank you,
+      <strong>${customerName}</strong>!
     </p>
 
     <p>
-      Your order has been received.
+      We'll contact you to confirm your order.
     </p>
 
     <strong>
-      Total: ${total} ETB
+      Total:
+      ${total} ETB
     </strong>
   `;
 
   confirmation.classList.remove("hidden");
 
+  // CLEAR CART AFTER ORDER
   state.cart = [];
+
+  localStorage.removeItem("addisEatsCart");
 
   renderCart();
 
@@ -412,12 +452,13 @@ function placeOrder() {
 
   confirmation.scrollIntoView({
     behavior: "smooth",
+    block: "center",
   });
 }
 
-// ==============================
-// SEARCH EVENT
-// ==============================
+// =====================================================
+// SEARCH
+// =====================================================
 
 searchInput.addEventListener("input", (event) => {
   state.search = event.target.value;
@@ -425,9 +466,9 @@ searchInput.addEventListener("input", (event) => {
   renderMenu();
 });
 
-// ==============================
-// CATEGORY EVENT
-// ==============================
+// =====================================================
+// CATEGORY FILTER
+// =====================================================
 
 categorySelect.addEventListener("change", (event) => {
   state.category = event.target.value;
@@ -435,11 +476,12 @@ categorySelect.addEventListener("change", (event) => {
   renderMenu();
 });
 
-// ==============================
-// CART BUTTON EVENTS
-// ==============================
+// =====================================================
+// CART EVENTS
+// =====================================================
 
 document.addEventListener("click", (event) => {
+  // ADD TO CART
   const addButton = event.target.closest(".add-btn");
 
   if (addButton) {
@@ -450,6 +492,7 @@ document.addEventListener("click", (event) => {
     return;
   }
 
+  // REMOVE FROM CART
   const removeButton = event.target.closest(".remove-btn");
 
   if (removeButton) {
@@ -459,15 +502,15 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// ==============================
-// CLEAR CART EVENT
-// ==============================
+// =====================================================
+// CLEAR CART BUTTON
+// =====================================================
 
 clearCartButton.addEventListener("click", clearCart);
 
-// ==============================
-// CHECKOUT EVENT
-// ==============================
+// =====================================================
+// CHECKOUT
+// =====================================================
 
 checkoutForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -475,16 +518,16 @@ checkoutForm.addEventListener("submit", (event) => {
   placeOrder();
 });
 
-// ==============================
+// =====================================================
 // LIVE VALIDATION
-// ==============================
+// =====================================================
 
 nameInput.addEventListener("input", validateName);
 
 phoneInput.addEventListener("input", validatePhone);
 
-// ==============================
+// =====================================================
 // START APP
-// ==============================
+// =====================================================
 
 loadMenu();
