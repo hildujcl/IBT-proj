@@ -1,0 +1,42 @@
+export const menu = [
+  {
+    id: 1,
+    name: "Doro Wot",
+    price: 240,
+    category: "Wot",
+    spicy: true,
+    image: "images/dorowot.jpg",
+  },
+  {
+    id: 2,
+    name: "Kitfo",
+    price: 280,
+    category: "Kitfo",
+    spicy: true,
+    image: "/images/kitfo.jpg",
+  },
+  {
+    id: 3,
+    name: "Beyaynet",
+    price: 220,
+    category: "Vegetarian",
+    spicy: false,
+    image: "/images/beyaynet.jpg",
+  },
+  {
+    id: 4,
+    name: "Firfir tibis",
+    price: 180,
+    category: "Breakfast",
+    spicy: true,
+    image: "/images/firfir_tibs.jpg",
+  },
+  {
+    id: 5,
+    name: "Shiro Wot",
+    price: 160,
+    category: "Wot",
+    spicy: false,
+    image: "/images/shiro.jpg",
+  },
+];
