@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "name": "Doro Wat",
+    "price": 450,
+    "category": "Traditional",
+    "spicy": true,
+    "image": "/image/dorowot.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Kitfo",
+    "price": 500,
+    "category": "Meat",
+    "spicy": false,
+    "image": "/image/kitfo.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Beyaynet",
+    "price": 350,
+    "category": "Vegetarian",
+    "spicy": true,
+    "image": "/image/beyaynet.jpg"
+  },
+  {
+    "id": 4,
+    "name": "firfir tibs",
+    "price": 250,
+    "category": "Traditional",
+    "spicy": false,
+    "image": "/image/firfir_tibs.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Shiro Wat",
+    "price": 300,
+    "category": "Vegetarian",
+    "spicy": true,
+    "image": "/image/shiro.jpg"
+
+  }
+]
