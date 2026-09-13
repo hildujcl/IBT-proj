@@ -1,14 +1,14 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #fff5f8;
-  color: #333;
+  background-color: #d2c7b8;
+  color: #bc6262;
 }
 
 header {
   text-align: center;
   padding: 30px;
-  background-color: #e91e63;
+  background-color: #d7a368;
   color: white;
 }
 
@@ -27,7 +27,7 @@ main > h2 {
 }
 
 .dish {
-  background: white;
+  background: rgb(212, 197, 182);
   margin: 15px 0;
   padding: 20px;
   border-radius: 12px;

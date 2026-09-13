@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "title": "Student Handbook",
+    "type": "PDF",
+    "description": "A guide containing important campus rules, services, and student information."
+  },
+  {
+    "id": "2",
+    "title": "Programming Study Guide",
+    "type": "Guide",
+    "description": "Helpful programming concepts and resources for computer science students."
+  },
+  {
+    "id": "3",
+    "title": "Career Preparation Guide",
+    "type": "Guide",
+    "description": "Tips for preparing a CV, building projects, and getting ready for technical interviews."
+  },
+  {
+    "id": "4",
+    "title": "Campus Library Resources",
+    "type": "Website",
+    "description": "Useful academic materials and research resources available to students."
+  }
+]

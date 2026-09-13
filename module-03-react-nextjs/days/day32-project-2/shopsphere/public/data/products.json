@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1",
+    "title": "Wireless Headphones",
+    "price": 2500,
+    "category": "Electronics",
+    "rating": 4.5,
+    "description": "Comfortable wireless headphones with high-quality sound and long battery life.",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e"
+  },
+  {
+    "id": "2",
+    "title": "Smart Watch",
+    "price": 4200,
+    "category": "Electronics",
+    "rating": 4.7,
+    "description": "A modern smart watch for fitness tracking, notifications, and everyday use.",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+  },
+  {
+    "id": "3",
+    "title": "Classic T-Shirt",
+    "price": 1200,
+    "category": "Clothing",
+    "rating": 4.2,
+    "description": "A comfortable classic t-shirt suitable for everyday wear.",
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"
+  },
+  {
+    "id": "4",
+    "title": "Running Shoes",
+    "price": 3500,
+    "category": "Clothing",
+    "rating": 4.6,
+    "description": "Lightweight running shoes designed for comfort and daily exercise.",
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff"
+  },
+  {
+    "id": "5",
+    "title": "Face Moisturizer",
+    "price": 1800,
+    "category": "Beauty",
+    "rating": 4.4,
+    "description": "A gentle moisturizer designed to keep your skin hydrated throughout the day.",
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883"
+  },
+  {
+    "id": "6",
+    "title": "Perfume",
+    "price": 3000,
+    "category": "Beauty",
+    "rating": 4.8,
+    "description": "A fresh and elegant fragrance suitable for everyday occasions.",
+    "image": "https://images.unsplash.com/photo-1541643600914-78b084683601"
+  }
+]

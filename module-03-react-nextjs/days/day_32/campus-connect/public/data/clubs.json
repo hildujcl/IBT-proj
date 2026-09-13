@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "Computer Science Club",
+    "category": "Technology",
+    "description": "A community for students interested in programming, software development, and technology.",
+    "meeting": "Every Tuesday at 4:00 PM",
+    "members": 85,
+    "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4"
+  },
+  {
+    "id": "2",
+    "name": "Debate Club",
+    "category": "Academic",
+    "description": "Students develop public speaking, critical thinking, and debate skills.",
+    "meeting": "Every Wednesday at 3:00 PM",
+    "members": 42,
+    "image": "https://images.unsplash.com/photo-1544928147-79a2dbc1f389"
+  },
+  {
+    "id": "3",
+    "name": "Photography Club",
+    "category": "Arts",
+    "description": "A creative community for students who enjoy photography and visual storytelling.",
+    "meeting": "Every Friday at 2:00 PM",
+    "members": 56,
+    "image": "https://images.unsplash.com/photo-1452780212940-6f5c0d14d848"
+  },
+  {
+    "id": "4",
+    "name": "Business Club",
+    "category": "Business",
+    "description": "Students explore entrepreneurship, business ideas, leadership, and networking.",
+    "meeting": "Every Thursday at 4:00 PM",
+    "members": 71,
+    "image": "https://images.unsplash.com/photo-1556761175-b413da4baf72"
+  }
+]

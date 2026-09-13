@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "title": "Campus Tech Meetup",
+    "date": "2026-09-20",
+    "location": "Main Auditorium",
+    "description": "A student meetup to discuss technology, programming, and career opportunities."
+  },
+  {
+    "id": "2",
+    "title": "Cultural Night",
+    "date": "2026-09-25",
+    "location": "Student Center",
+    "description": "An evening celebrating different cultures through music, food, and performances."
+  },
+  {
+    "id": "3",
+    "title": "Web Development Workshop",
+    "date": "2026-10-02",
+    "location": "Computer Lab",
+    "description": "A practical workshop covering modern web development and React basics."
+  },
+  {
+    "id": "4",
+    "title": "Student Sports Day",
+    "date": "2026-10-10",
+    "location": "University Sports Field",
+    "description": "A fun day of football, basketball, volleyball, and other student activities."
+  }
+]
