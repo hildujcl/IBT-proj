@@ -1,0 +1,42 @@
+export const dishes = [
+  {
+    id: "doro-wat",
+    name: "Doro Wat",
+    category: "Traditional",
+    price: 350,
+    description: "A rich and spicy Ethiopian chicken stew served with injera.",
+    image: "/image/dorowot.jpg",
+  },
+  {
+    id: "tibs",
+    name: "Tibs",
+    category: "Meat",
+    price: 400,
+    description: "Tender pieces of meat sautéed with onions and peppers.",
+    image: "/image/tibs.jpg",
+  },
+  {
+    id: "beyaynet",
+    name: "Beyaynet",
+    category: "Vegetarian",
+    price: 300,
+    description: "A colorful combination of Ethiopian vegetarian dishes.",
+    image: "/image/beyaynet.jpg",
+  },
+  {
+    id: "firfir",
+    name: "Firfir",
+    category: "Traditional",
+    price: 250,
+    description: "Shredded injera mixed with flavorful berbere sauce.",
+    image: "/image/firfir.jpg",
+  },
+  {
+    id: "shiro-wat",
+    name: "Shiro Wat",
+    category: "Vegetarian",
+    price: 220,
+    description: "A smooth chickpea stew seasoned with Ethiopian spices.",
+    image: "/image/shiro.jpg",
+  },
+];
