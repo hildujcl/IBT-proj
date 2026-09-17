@@ -1,18 +1,37 @@
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
+import { useCartStore } from "../store/cartStore";
 
 export default function Checkout() {
-  const { isLoggedIn } = useAuth();
+  const items = useCartStore((state) => state.items);
 
-  if (!isLoggedIn) {
-    return <Navigate to="/signin" replace />;
-  }
+  const total = items.reduce((sum, item) => sum + item.price, 0);
 
   return (
-    <div>
-      <h2>Checkout</h2>
+    <div className="checkout-page">
+      <div className="checkout-card">
+        <h2>Checkout</h2>
 
-      <p>You are ready to complete your order.</p>
+        {items.length === 0 ? (
+          <>
+            <p>Your cart is empty.</p>
+
+            <Link to="/menu" className="primary-button">
+              Go to Menu
+            </Link>
+          </>
+        ) : (
+          <>
+            <p>
+              You have {items.length} item
+              {items.length !== 1 ? "s" : ""} in your cart.
+            </p>
+
+            <h3>Total: {total} ETB</h3>
+
+            <button>Place Order</button>
+          </>
+        )}
+      </div>
     </div>
   );
 }

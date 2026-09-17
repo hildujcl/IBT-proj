@@ -13,7 +13,7 @@ export const dishes = [
     category: "Meat",
     price: 400,
     description: "Tender pieces of meat sautéed with onions and peppers.",
-    image: "/image/tibs.jpg",
+    image: "/image/tibis.jpg",
   },
   {
     id: "beyaynet",

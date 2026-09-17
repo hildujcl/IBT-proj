@@ -1,43 +1,72 @@
+import { useSearchParams, Link } from "react-router-dom";
 import { dishes } from "../data/dishes";
 import { useCartStore } from "../store/cartStore";
 
 export default function Menu() {
   const addItem = useCartStore((state) => state.addItem);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const selectedCategory = searchParams.get("category") || "All";
+
+  const categories = ["All", "Traditional", "Meat", "Vegetarian"];
+
+  const filteredDishes =
+    selectedCategory === "All"
+      ? dishes
+      : dishes.filter((dish) => dish.category === selectedCategory);
+
+  const handleCategoryChange = (event) => {
+    const value = event.target.value;
+
+    if (value === "All") {
+      setSearchParams({});
+    } else {
+      setSearchParams({ category: value });
+    }
+  };
+
   return (
-    <div>
-      <h2>Our Menu</h2>
-<img
-  src={dish.image}
-  alt={dish.name}
-  className="dish-image"
-/>
+    <div className="menu-page">
+      <div className="menu-heading">
+        <div>
+          <p className="welcome">DISCOVER OUR FOOD</p>
+          <h2>Our Menu</h2>
+        </div>
 
-<div className="dish-content">
-  <span className="category">{dish.category}</span>
+        <select
+          value={selectedCategory}
+          onChange={handleCategoryChange}
+          className="category-select"
+        >
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </div>
 
-  <h3>{dish.name}</h3>
-
-  <p>{dish.description}</p>
-
-  <div className="dish-bottom">
-    <span className="price">{dish.price} ETB</span>
-
-    <button onClick={() => addItem(dish)}>
-      Add to Cart
-    </button>
-  </div>
-</div>
       <div className="menu-grid">
-        {dishes.map((dish) => (
+        {filteredDishes.map((dish) => (
           <div className="dish-card" key={dish.id}>
-            <h3>{dish.name}</h3>
+            <Link to={`/menu/${dish.id}`} className="dish-image-link">
+              <img src={dish.image} alt={dish.name} className="dish-image" />
+            </Link>
 
-            <p className="price">{dish.price} ETB</p>
+            <div className="dish-content">
+              <span className="category">{dish.category}</span>
 
-            <p>{dish.description}</p>
+              <h3>{dish.name}</h3>
 
-            <button onClick={() => addItem(dish)}>Add to Cart</button>
+              <p>{dish.description}</p>
+
+              <div className="dish-bottom">
+                <span className="price">{dish.price} ETB</span>
+
+                <button onClick={() => addItem(dish)}>Add to Cart</button>
+              </div>
+            </div>
           </div>
         ))}
       </div>

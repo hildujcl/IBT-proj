@@ -9,7 +9,7 @@ export default function Home() {
 
           <h1>
             Taste Ethiopia,
-            <span> One Bite at a Time</span>
+            <span>One Bite at a Time</span>
           </h1>
 
           <p className="hero-text">

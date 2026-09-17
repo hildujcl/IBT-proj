@@ -9,13 +9,17 @@ export default function Header() {
       </Link>
 
       <nav className="main-nav">
-        <Link to="/"> Home         </Link>
-        <Link to="/menu "> Menu     </Link>
+        <Link to="/">Home</Link>
+
+        <Link to="/menu">Menu</Link>
+
         <Link to="/cart">
           <CartBadge />
         </Link>
-        <Link to="/checkout"> Checkout </Link>
-        <Link to="/signin"> Sign In </Link>
+
+        <Link to="/checkout">Checkout</Link>
+
+        <Link to="/signin">Sign In</Link>
       </nav>
     </header>
   );

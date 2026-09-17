@@ -13,9 +13,7 @@ export const useCartStore = create(
 
       removeItem: (id) =>
         set((state) => ({
-          items: state.items.filter(
-            (item) => item.id !== id
-          ),
+          items: state.items.filter((item) => item.id !== id),
         })),
 
       clear: () =>
@@ -25,6 +23,6 @@ export const useCartStore = create(
     }),
     {
       name: "addis-eats-cart",
-    }
-  )
+    },
+  ),
 );
