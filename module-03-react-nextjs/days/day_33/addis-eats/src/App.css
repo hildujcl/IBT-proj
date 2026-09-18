@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff5f8;
+}
+
+.checkout-page {
+  width: min(600px, 90%);
+  margin: 50px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.checkout-page h1 {
+  margin-bottom: 8px;
+}
+
+.checkout-total {
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid #e91e63;
+  border-color: #e91e63;
+}
+
+input[aria-invalid="true"] {
+  border-color: #d32f2f;
+}
+
+.error {
+  margin-top: 6px;
+  color: #d32f2f;
+  font-size: 14px;
+}
+
+.request-error {
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background: #ffebee;
+  color: #c62828;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #e91e63;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #c2185b;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
