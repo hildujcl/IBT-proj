@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Doro Wat",
+    "price": 350,
+    "category": "Meat",
+    "image": "/image/dorowot.jpg",
+    "description": "Spicy chicken stew cooked with berbere and traditional Ethiopian spices."
+  },
+  {
+    "id": 2,
+    "name": "Tibs",
+    "price": 400,
+    "category": "Meat",
+    "image": "/image/tibis.jpg",
+    "description": "Tender beef pieces cooked with onions, peppers and Ethiopian spices."
+  },
+  {
+    "id": 3,
+    "name": "Beyaynet",
+    "price": 300,
+    "category": "Vegetarian",
+    "image": "/image/beyaynet.jpg",
+    "description": "A colorful combination of delicious Ethiopian vegetarian dishes."
+  },
+  {
+    "id": 4,
+    "name": "Firfir",
+    "price": 250,
+    "category": "Traditional",
+    "image": "/image/firfir.jpg",
+    "description": "Shredded injera mixed with berbere and traditional Ethiopian spices."
+  },
+  {
+    "id": 5,
+    "name": "Shiro Wat",
+    "price": 220,
+    "category": "Vegetarian",
+    "image": "/image/shiro.jpg",
+    "description": "Creamy chickpea stew prepared with Ethiopian spices."
+  }
+]
