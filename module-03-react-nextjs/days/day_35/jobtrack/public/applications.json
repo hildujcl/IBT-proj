@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "company": "ABC Technology",
+    "position": "Frontend Developer",
+    "location": "Addis Ababa",
+    "status": "Applied",
+    "date": "2026-09-18",
+    "notes": "React and JavaScript position."
+  },
+  {
+    "id": 2,
+    "company": "Digital Ethiopia",
+    "position": "Software Developer",
+    "location": "Addis Ababa",
+    "status": "Interview",
+    "date": "2026-09-15",
+    "notes": "Technical interview scheduled."
+  },
+  {
+    "id": 3,
+    "company": "Design Co",
+    "position": "UI/UX Designer",
+    "location": "Remote",
+    "status": "Rejected",
+    "date": "2026-09-10",
+    "notes": "Application was not selected."
+  },
+  {
+    "id": 4,
+    "company": "Tech Solutions",
+    "position": "Backend Developer",
+    "location": "Addis Ababa",
+    "status": "Offer",
+    "date": "2026-09-08",
+    "notes": "Received an offer."
+  }
+]
