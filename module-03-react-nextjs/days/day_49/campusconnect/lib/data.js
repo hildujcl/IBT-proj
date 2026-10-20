@@ -1,0 +1,22 @@
+export const events = [
+  { id: "web-workshop", title: "Web Development Workshop", category: "Workshop", date: "2026-10-20", time: "2:00 PM", location: "Main Hall", attendees: 45, image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80", description: "Build your first modern web interface in a friendly, hands-on session. Bring your laptop and questions; all experience levels are welcome.", organizer: "Computer Science Club" },
+  { id: "club-meetup", title: "Tech Club Meetup", category: "Club", date: "2026-10-22", time: "3:00 PM", location: "Student Center", attendees: 32, image: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1000&q=80", description: "Meet students who love technology, share what you are learning, and find a team for your next project.", organizer: "Campus Tech Club" },
+  { id: "career-seminar", title: "Career Guidance Seminar", category: "Seminar", date: "2026-10-25", time: "10:00 AM", location: "Auditorium", attendees: 80, image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1000&q=80", description: "Learn about internships, portfolios, interviews, and practical ways to prepare for your first role.", organizer: "Career Center" },
+  { id: "study-session", title: "Study Tips Session", category: "Academic", date: "2026-10-27", time: "1:00 PM", location: "Library", attendees: 24, image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80", description: "Exchange study strategies, plan your week, and work alongside classmates in a supportive space.", organizer: "Student Success Office" },
+  { id: "design-lab", title: "UI/UX Design Lab", category: "Workshop", date: "2026-10-29", time: "11:00 AM", location: "Innovation Lab", attendees: 18, image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80", description: "Explore wireframes, usability, and accessible interface patterns through a collaborative design challenge.", organizer: "Design Society" },
+  { id: "volunteer-day", title: "Campus Volunteer Day", category: "Community", date: "2026-11-02", time: "9:00 AM", location: "North Gate", attendees: 56, image: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=1000&q=80", description: "Connect with your campus community and help make shared spaces more welcoming for everyone.", organizer: "Student Union" }
+];
+export const resources = [
+  { id: "next-guide", title: "Next.js Study Guide", category: "Programming", type: "PDF", size: "2.4 MB", description: "A beginner-friendly guide to routing, rendering, and data fetching." },
+  { id: "data-structures", title: "Data Structures Notes", category: "Computer Science", type: "PDF", size: "1.8 MB", description: "Quick notes for arrays, stacks, queues, trees, and graphs." },
+  { id: "interview", title: "Interview Preparation", category: "Career", type: "PDF", size: "1.2 MB", description: "Practice prompts and tips for technical interviews." },
+  { id: "design", title: "UI/UX Design Basics", category: "Design", type: "PDF", size: "3.0 MB", description: "Learn hierarchy, spacing, contrast, and accessibility basics." },
+  { id: "study-planner", title: "Weekly Study Planner", category: "Academic", type: "DOC", size: "640 KB", description: "A simple planner to organize classes, assignments, and breaks." },
+  { id: "portfolio", title: "Student Portfolio Checklist", category: "Career", type: "PDF", size: "900 KB", description: "A checklist for presenting projects and documenting your work." }
+];
+export const announcements = [
+  { id: "exam", title: "Midterm Exam Schedule Released", date: "Oct 15, 2026", tag: "Academic", description: "The midterm examination schedule is now available. Please check your department noticeboard for room assignments." },
+  { id: "library", title: "Library Extended Hours", date: "Oct 12, 2026", tag: "Campus", description: "The library will stay open later during the examination period to give students more study time." },
+  { id: "scholarship", title: "Scholarship Opportunities", date: "Oct 10, 2026", tag: "Opportunity", description: "New scholarship opportunities have been shared by the student support office. Check eligibility and deadlines early." },
+  { id: "wifi", title: "Campus Wi-Fi Maintenance", date: "Oct 08, 2026", tag: "Notice", description: "Campus Wi-Fi may be briefly interrupted this weekend while scheduled maintenance is completed." }
+];
