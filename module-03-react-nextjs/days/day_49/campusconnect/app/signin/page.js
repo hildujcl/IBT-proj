@@ -1,26 +1,57 @@
+"use client";
+
 import Link from "next/link";
-import { signInAction } from "@/lib/actions";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useState } from "react";
 
-export const metadata = {
-  title: "Sign in",
-  description: "Sign in to your CampusConnect student account.",
-};
+function SignInForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-export default async function SignInPage({ searchParams }) {
-  const params = await searchParams;
-  const hasError = Boolean(params?.error);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const next =
-    typeof params?.next === "string" &&
-    params.next.startsWith("/") &&
-    !params.next.startsWith("//") &&
-    !params.next.includes("\\")
-      ? params.next
+  const next = searchParams.get("next") || "/dashboard";
+  const safeNext =
+    next.startsWith("/") && !next.startsWith("//") && !next.includes("\\")
+      ? next
       : "/dashboard";
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    try {
+      const savedUser = JSON.parse(
+        localStorage.getItem("campusConnectUser") || "null",
+      );
+
+      if (
+        !savedUser ||
+        savedUser.email !== email.trim().toLowerCase() ||
+        savedUser.password !== password
+      ) {
+        setError("The email or password is incorrect. Please try again.");
+        return;
+      }
+
+      localStorage.setItem(
+        "campusConnectSession",
+        JSON.stringify({
+          id: savedUser.id,
+          name: savedUser.name,
+          email: savedUser.email,
+        }),
+      );
+
+      router.push(safeNext);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    }
+  }
 
   return (
     <main className="grid min-h-screen bg-white lg:grid-cols-2">
-      {/* Welcome panel */}
       <section className="relative hidden overflow-hidden bg-gradient-to-br from-violet-950 via-violet-800 to-indigo-700 p-12 text-white lg:flex lg:flex-col lg:justify-between xl:p-16">
         <div className="absolute -right-20 top-24 h-72 w-72 rounded-full bg-fuchsia-400/20 blur-3xl" />
         <div className="absolute -bottom-24 -left-20 h-80 w-80 rounded-full bg-blue-400/20 blur-3xl" />
@@ -39,11 +70,9 @@ export default async function SignInPage({ searchParams }) {
           <p className="font-bold tracking-[0.2em] text-violet-300">
             WELCOME BACK
           </p>
-
           <h1 className="mt-5 text-5xl leading-tight font-extrabold xl:text-6xl">
             Your campus journey continues here.
           </h1>
-
           <p className="mt-6 text-lg leading-8 text-violet-100">
             Return to your student space to explore learning resources, discover
             opportunities, and stay connected with campus life.
@@ -70,7 +99,6 @@ export default async function SignInPage({ searchParams }) {
         </p>
       </section>
 
-      {/* Sign-in form */}
       <section className="flex items-center justify-center px-6 py-12 sm:px-10 lg:px-12">
         <div className="w-full max-w-md">
           <Link
@@ -84,36 +112,33 @@ export default async function SignInPage({ searchParams }) {
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-100 text-3xl">
               👋
             </div>
-
             <p className="mt-7 font-bold tracking-widest text-violet-700">
               YOUR STUDENT SPACE
             </p>
-
             <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
               Welcome back!
             </h2>
-
             <p className="mt-3 leading-7 text-slate-600">
               Sign in to continue your CampusConnect journey.
             </p>
           </div>
 
-          {hasError && (
+          {searchParams.get("error") === "auth" && (
+            <div className="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+              Please sign in to continue.
+            </div>
+          )}
+
+          {error && (
             <div
               role="alert"
               className="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm leading-6 text-red-800"
             >
-              {params.error === "credentials"
-                ? "The email or password is incorrect. Please try again."
-                : params.error === "auth"
-                  ? "Please sign in to continue."
-                  : "Please check your details and try again."}
+              {error}
             </div>
           )}
 
-          <form action={signInAction} className="mt-8 space-y-5">
-            <input type="hidden" name="next" value={next} />
-
+          <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             <div>
               <label
                 htmlFor="email"
@@ -127,6 +152,8 @@ export default async function SignInPage({ searchParams }) {
                 type="email"
                 autoComplete="email"
                 placeholder="you@example.com"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
                 required
                 className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3.5 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-600 focus:ring-4 focus:ring-violet-100"
               />
@@ -142,13 +169,14 @@ export default async function SignInPage({ searchParams }) {
                 </label>
                 <span className="text-xs text-slate-500">Demo account</span>
               </div>
-
               <input
                 id="password"
                 name="password"
                 type="password"
                 autoComplete="current-password"
                 placeholder="Enter your password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
                 required
                 className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3.5 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-600 focus:ring-4 focus:ring-violet-100"
               />
@@ -165,8 +193,8 @@ export default async function SignInPage({ searchParams }) {
 
           <div className="mt-7 rounded-xl bg-violet-50 p-4">
             <p className="text-sm leading-6 text-slate-600">
-              Need to try the demo? Use the demo credentials configured in your
-              local environment file.
+              Sign in using the account you created on this browser. Your demo
+              account is stored locally on this device.
             </p>
           </div>
 
@@ -187,5 +215,13 @@ export default async function SignInPage({ searchParams }) {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function SignInPage() {
+  return (
+    <Suspense fallback={<main className="min-h-screen bg-white" />}>
+      <SignInForm />
+    </Suspense>
   );
 }

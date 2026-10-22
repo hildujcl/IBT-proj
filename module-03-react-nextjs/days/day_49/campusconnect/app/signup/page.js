@@ -1,11 +1,68 @@
-import Link from "next/link";
+"use client";
 
-export const metadata = {
-  title: "Create Account | CampusConnect",
-  description: "Join CampusConnect and connect with your campus community.",
-};
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function SignupPage() {
+  const router = useRouter();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    setError("");
+
+    const cleanName = name.trim();
+    const cleanEmail = email.trim().toLowerCase();
+
+    if (cleanName.length < 2) {
+      setError("Please enter your full name.");
+      return;
+    }
+
+    if (password.length < 8) {
+      setError("Your password must contain at least 8 characters.");
+      return;
+    }
+
+    try {
+      const savedUser = JSON.parse(
+        localStorage.getItem("campusConnectUser") || "null",
+      );
+
+      if (savedUser?.email === cleanEmail) {
+        setError("An account with this email already exists on this browser.");
+        return;
+      }
+
+      const newUser = {
+        id: `student-${Date.now()}`,
+        name: cleanName,
+        email: cleanEmail,
+        password,
+      };
+
+      localStorage.setItem("campusConnectUser", JSON.stringify(newUser));
+
+      localStorage.setItem(
+        "campusConnectSession",
+        JSON.stringify({
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+        }),
+      );
+
+      router.push("/dashboard?welcome=1");
+    } catch {
+      setError("Unable to save your account. Please try again.");
+    }
+  }
+
   return (
     <main className="min-h-screen bg-slate-50">
       <section className="relative overflow-hidden bg-gradient-to-br from-violet-950 via-purple-800 to-violet-600 px-6 py-16 sm:py-20">
@@ -21,9 +78,11 @@ export default function SignupPage() {
             <p className="text-sm font-bold uppercase tracking-[0.25em] text-purple-200">
               Your campus community
             </p>
+
             <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
               Create your CampusConnect account
             </h1>
+
             <p className="mt-5 max-w-xl text-lg leading-8 text-purple-100">
               Discover campus events, find useful resources, and stay connected
               with your university community.
@@ -61,11 +120,21 @@ export default function SignupPage() {
             <h2 className="text-2xl font-bold text-slate-900">
               Create your account
             </h2>
+
             <p className="mt-2 text-sm text-slate-500">
               Fill in your details to get started.
             </p>
 
-            <form action="/api/signup" method="POST" className="mt-8 space-y-5">
+            {error && (
+              <div
+                role="alert"
+                className="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm leading-6 text-red-800"
+              >
+                {error}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="mt-8 space-y-5">
               <div>
                 <label
                   htmlFor="name"
@@ -79,6 +148,8 @@ export default function SignupPage() {
                   type="text"
                   placeholder="Enter your full name"
                   autoComplete="name"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
                   required
                   className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
                 />
@@ -97,6 +168,8 @@ export default function SignupPage() {
                   type="email"
                   placeholder="you@university.edu"
                   autoComplete="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
                   required
                   className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
                 />
@@ -116,6 +189,8 @@ export default function SignupPage() {
                   placeholder="Create a password"
                   autoComplete="new-password"
                   minLength={8}
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
                   required
                   className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
                 />

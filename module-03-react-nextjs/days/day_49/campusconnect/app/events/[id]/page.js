@@ -1,7 +1,10 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { events } from "@/lib/data";
-import { getSession } from "@/lib/auth";
-export function generateStaticParams() { return events.map(e=>({id:e.id})); }
-export async function generateMetadata({params}) { const {id}=await params; const event=events.find(e=>e.id===id); return {title:event?.title || "Event not found", description:event?.description || "Campus event details."}; }
-export default async function EventDetailPage({params}) { const {id}=await params; const event=events.find(e=>e.id===id); if(!event) notFound(); const user=await getSession(); return <section className="page-shell detail-shell"><Link href="/events" className="back-link">← Back to events</Link><article className="detail-card"><img className="detail-image" src={event.image} alt="Students learning and collaborating at a campus event"/><div className="detail-content"><span className="category-pill static-pill">{event.category}</span><h1>{event.title}</h1><p className="detail-lead">{event.description}</p><div className="detail-facts"><div><span>DATE</span><strong>▦ {new Date(`${event.date}T12:00:00`).toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric",year:"numeric"})}</strong></div><div><span>TIME</span><strong>◷ {event.time}</strong></div><div><span>LOCATION</span><strong>⌖ {event.location}</strong></div><div><span>COMMUNITY</span><strong>♙ {event.attendees} interested</strong></div></div><div className="organizer-row"><span className="organizer-avatar">✦</span><span><small>ORGANIZED BY</small><strong>{event.organizer}</strong></span></div>{user?<p className="inline-success" role="status">You’re signed in as {user.name}. Ask the organizer to confirm your attendance.</p>:<div className="detail-cta"><Link className="button" href={`/signin?next=${encodeURIComponent(`/events/${event.id}`)}`}>Sign in to join event →</Link><p>Sign in to connect with event organizers.</p></div>}</div></article></section>; }
+import EventDetailClient from "@/components/EventDetailClient";
+
+export const metadata = {
+  title: "Event Details | CampusConnect",
+  description: "View campus event details and connect with organizers.",
+};
+
+export default function EventDetailPage() {
+  return <EventDetailClient />;
+}
