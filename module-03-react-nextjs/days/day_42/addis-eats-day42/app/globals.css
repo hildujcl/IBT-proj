@@ -1,0 +1,529 @@
+/* =====================================
+   ADDIS EATS — SHARED DESIGN SYSTEM
+===================================== */
+
+:root {
+  --brand: #a84227;
+  --brand-dark: #82301d;
+  --cream: #fffaf4;
+  --surface: #ffffff;
+  --coffee: #30221d;
+  --muted: #766861;
+  --border: #eee1d6;
+  --soft-orange: #f8e9dc;
+  --shadow: 0 12px 35px rgb(62 37 24 / 8%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--coffee);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--brand-dark);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+.button,
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 12px;
+  background: var(--brand);
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+button:hover,
+.button:hover,
+.button-link:hover {
+  background: var(--brand-dark);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgb(168 66 39 / 20%);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid #e6a37e;
+  outline-offset: 3px;
+}
+
+/* Main layout */
+
+.container,
+.content {
+  width: min(1120px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.content {
+  padding-top: 36px;
+  padding-bottom: 64px;
+}
+
+section {
+  margin-bottom: 42px;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--coffee);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+p {
+  color: var(--muted);
+}
+
+/* Navigation */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  color: var(--brand);
+  font-size: 1.7rem;
+  font-weight: 900;
+  letter-spacing: -0.7px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.nav-links a {
+  color: var(--coffee);
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  color: var(--brand);
+}
+
+.nav-links form {
+  margin: 0;
+}
+
+/* Homepage hero */
+
+.hero {
+  margin-top: 32px;
+  padding: clamp(32px, 7vw, 76px);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 90% 10%, rgb(231 179 133 / 30%), transparent 36%),
+    linear-gradient(135deg, #fff3e5, #fffaf4 65%);
+}
+
+.hero h1 {
+  max-width: 720px;
+  margin: 14px 0;
+}
+
+.hero p:not(.eyebrow) {
+  max-width: 610px;
+  font-size: 1.08rem;
+}
+
+.eyebrow {
+  color: var(--brand);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+/* Cards */
+
+.dish-card,
+.signin-card,
+.panel,
+.form-card,
+.resource-card,
+.announcement-card,
+.order-card,
+.event-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.dish-card {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.dish-card:hover,
+.resource-card:hover,
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgb(62 37 24 / 12%);
+}
+
+.dish-content {
+  padding: 22px;
+}
+
+.dish-content h2 {
+  margin: 8px 0;
+}
+
+.dish-image {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  background: var(--soft-orange);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-items: stretch;
+  gap: 26px;
+  margin: 28px 0;
+}
+
+.dish-price {
+  color: var(--brand);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+/* Dish detail */
+
+.dish-detail {
+  max-width: 780px;
+  margin: 30px auto;
+  padding: clamp(20px, 4vw, 36px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: white;
+  box-shadow: var(--shadow);
+}
+
+.dish-detail .dish-image {
+  height: clamp(240px, 42vw, 430px);
+  margin-bottom: 24px;
+  border-radius: 16px;
+}
+
+/* Forms and authentication */
+
+.signin-page {
+  max-width: 680px;
+  margin: 36px auto;
+}
+
+.signin-card,
+.form-card {
+  padding: clamp(24px, 5vw, 42px);
+}
+
+.signin-card h1,
+.form-card h1 {
+  margin-top: 10px;
+}
+
+.signin-form,
+.form-card form {
+  display: grid;
+  gap: 14px;
+}
+
+label {
+  color: var(--coffee);
+  font-weight: 700;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 15px;
+  border: 1px solid #ded0c5;
+  border-radius: 11px;
+  background: white;
+  color: var(--coffee);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #a4978e;
+}
+
+.signin-form .button,
+.form-card form button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Lists, announcements and resources */
+
+.announcement-card,
+.resource-card,
+.order-card,
+.event-card,
+.panel {
+  margin: 18px 0;
+  padding: 24px;
+}
+
+.announcement-card h2,
+.resource-card h2,
+.order-card h2,
+.event-card h2 {
+  margin-top: 0;
+}
+
+.home-menu {
+  margin: 56px 0;
+}
+
+.signup-prompt {
+  margin-top: 24px;
+  text-align: center;
+}
+
+/* Small screens */
+
+@media (max-width: 640px) {
+  .container,
+  .content {
+    width: min(100% - 28px, 1120px);
+  }
+
+  .navbar {
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .hero {
+    padding: 28px 22px;
+    border-radius: 20px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .dish-image {
+    height: 230px;
+  }
+
+  .dish-detail {
+    padding: 18px;
+  }
+}
+
+/* Addis Eats sign-up page */
+
+.signup-page {
+  width: min(100% - 32px, 560px);
+  margin: 36px auto 64px;
+}
+
+.signup-back {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: #6b5145;
+  font-weight: 600;
+}
+
+.signup-card {
+  padding: clamp(24px, 5vw, 44px);
+  border: 1px solid #eee1d6;
+  border-radius: 26px;
+  background: #fff;
+  box-shadow: 0 16px 44px rgb(62 37 24 / 9%);
+}
+
+.signup-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+  color: #a84227;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.signup-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 14px;
+  background: #f8e9dc;
+  font-size: 1.5rem;
+}
+
+.signup-card h1 {
+  margin: 10px 0;
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  letter-spacing: -1px;
+}
+
+.signup-description {
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+.signup-form {
+  display: grid;
+  gap: 19px;
+}
+
+.signup-field {
+  display: grid;
+  gap: 8px;
+}
+
+.signup-field label {
+  color: #30221d;
+  font-size: 0.93rem;
+  font-weight: 700;
+}
+
+.signup-field input {
+  width: 100%;
+  min-height: 49px;
+  padding: 13px 15px;
+  border: 1px solid #e4d6cb;
+  border-radius: 12px;
+  background: #fffdfb;
+  color: #30221d;
+  font: inherit;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.signup-field input:focus {
+  border-color: #a84227;
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(168 66 39 / 12%);
+}
+
+.signup-field small {
+  color: #766861;
+  font-size: 0.82rem;
+}
+
+.signup-submit {
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 5px;
+  border: 0;
+  border-radius: 12px;
+  background: #a84227;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.signup-submit:hover {
+  background: #82301d;
+  transform: translateY(-1px);
+}
+
+.signup-login {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 0.94rem;
+}
+
+.signup-login a {
+  color: #a84227;
+  font-weight: 800;
+}
+
+.signup-note {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #eee1d6;
+  text-align: center;
+  font-size: 0.85rem;
+}
