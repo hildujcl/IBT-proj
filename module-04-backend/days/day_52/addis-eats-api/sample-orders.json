@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1001,
+    "customerName": "Hana",
+    "area": "Bole",
+    "status": "Pending",
+    "dishes": [
+      {
+        "name": "Tibs Firfir",
+        "price": 25000
+      },
+      {
+        "name": "Beyaynet",
+        "price": 18000
+      }
+    ],
+    "teleBirrPhone": "0912345678",
+    "total": 43000
+  },
+  {
+    "id": 1002,
+    "customerName": "Abel",
+    "area": "Piazza",
+    "status": "Confirmed",
+    "dishes": [
+      {
+        "name": "Doro Wot",
+        "price": 55000
+      }
+    ],
+    "total": 55000
+  },
+  {
+    "id": 1003,
+    "customerName": "Sara",
+    "area": "Kazanchis",
+    "status": "Preparing",
+    "dishes": [
+      {
+        "name": "Shiro",
+        "price": 20000
+      },
+      {
+        "name": "Injera",
+        "price": 5000
+      }
+    ],
+    "teleBirrPhone": "0911223344",
+    "total": 25000
+  },
+  {
+    "id": 1004,
+    "customerName": "Daniel",
+    "area": "Sarbet",
+    "status": "Delivered",
+    "dishes": [
+      {
+        "name": "Special Tibs",
+        "price": 65000
+      }
+    ],
+    "total": 65000
+  }
+]

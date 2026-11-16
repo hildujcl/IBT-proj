@@ -1,0 +1,45 @@
+### 1. Get all orders
+GET http://localhost:3000/orders
+
+
+### 2. Get one order
+GET http://localhost:3000/orders/1
+
+
+### 3. Create a new order
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+  "customer": "Hana",
+  "area": "Bole",
+  "totalSantim": 25000,
+  "teleBirrPhone": "0912345678"
+}
+
+
+### 4. Test negative total (should return 400)
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+  "customer": "Abel",
+  "area": "Piazza",
+  "totalSantim": -5
+}
+
+
+### 5. Test extra field (should be stripped)
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+  "customer": "Sara",
+  "area": "Mexico",
+  "totalSantim": 30000,
+  "password": "secret"
+}
+
+
+### 6. Test an order that does not exist
+GET http://localhost:3000/orders/999
