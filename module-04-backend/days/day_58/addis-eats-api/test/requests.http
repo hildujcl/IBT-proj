@@ -1,0 +1,189 @@
+### RESTAURANTS
+
+### 1. Get all restaurants
+GET http://localhost:3000/api/v1/restaurants
+
+### 2. Get one restaurant
+GET http://localhost:3000/api/v1/restaurants/1
+
+### 3. Get open restaurants
+GET http://localhost:3000/api/v1/restaurants/open
+
+### 4. Create a restaurant
+POST http://localhost:3000/api/v1/restaurants
+Content-Type: application/json
+
+{
+  "name": "New Addis Kitchen",
+  "address": "Bole, Addis Ababa",
+  "phone": "+251911111222"
+}
+
+
+### DISHES
+
+### 5. Get all dishes
+GET http://localhost:3000/api/v1/dishes
+
+### 6. Get one dish
+GET http://localhost:3000/api/v1/dishes/1
+
+### 7. Get dishes for restaurant 1
+GET http://localhost:3000/api/v1/dishes?restaurantId=1
+
+### 8. Create a dish
+POST http://localhost:3000/api/v1/dishes
+Content-Type: application/json
+
+{
+  "restaurantId": 1,
+  "name": "Special Firfir",
+  "priceSantim": 20000
+}
+
+### 9. Get dishes through restaurant
+GET http://localhost:3000/api/v1/restaurants/1/dishes
+
+
+### ORDERS
+
+### 10. Get all orders
+GET http://localhost:3000/api/v1/orders
+
+### 11. Get pending orders
+GET http://localhost:3000/api/v1/orders/pending
+
+### 12. Filter by status
+GET http://localhost:3000/api/v1/orders?status=Pending
+
+### 13. Filter by area
+GET http://localhost:3000/api/v1/orders?area=Bole
+
+### 14. Test pagination
+GET http://localhost:3000/api/v1/orders?limit=5&offset=0
+
+### 15. Sort by ID
+GET http://localhost:3000/api/v1/orders?sort=asc
+
+### 16. Sort by totalSantim descending
+GET http://localhost:3000/api/v1/orders?sort=-totalSantim
+
+### 17. Get one order
+GET http://localhost:3000/api/v1/orders/1
+
+### 18. Get orders for restaurant 1
+GET http://localhost:3000/api/v1/restaurants/1/orders
+
+### 19. Create an order
+POST http://localhost:3000/api/v1/orders
+Content-Type: application/json
+
+{
+  "restaurantId": 1,
+  "customer": "Hana",
+  "area": "Bole",
+  "teleBirrPhone": "0912345678",
+  "lines": [
+    {
+      "dishId": 1,
+      "quantity": 2
+    }
+  ]
+}
+
+### 20. Update order status
+PATCH http://localhost:3000/api/v1/orders/1/status
+Content-Type: application/json
+
+{
+  "status": "Confirmed"
+}
+
+### 21. Delete order
+DELETE http://localhost:3000/api/v1/orders/12
+
+
+### TWELVE INVALID REQUEST TESTS
+
+### 1. Old API route must not be available
+GET http://localhost:3000/api/restaurants
+
+### 2. Invalid restaurant body
+POST http://localhost:3000/api/v1/restaurants
+Content-Type: application/json
+
+{
+  "name": "",
+  "address": ""
+}
+
+### 3. Invalid dish restaurant ID
+POST http://localhost:3000/api/v1/dishes
+Content-Type: application/json
+
+{
+  "restaurantId": -1,
+  "name": "Invalid Dish",
+  "priceSantim": 15000
+}
+
+### 4. Dish references nonexistent restaurant
+POST http://localhost:3000/api/v1/dishes
+Content-Type: application/json
+
+{
+  "restaurantId": 999,
+  "name": "Unknown Restaurant Dish",
+  "priceSantim": 15000
+}
+
+### 5. Invalid order limit
+GET http://localhost:3000/api/v1/orders?limit=999
+
+### 6. Negative order offset
+GET http://localhost:3000/api/v1/orders?offset=-1
+
+### 7. Invalid order sorting
+GET http://localhost:3000/api/v1/orders?sort=invalid
+
+### 8. Invalid order status filter
+GET http://localhost:3000/api/v1/orders?status=invalid
+
+### 9. Invalid delivery area
+GET http://localhost:3000/api/v1/orders?area=Invalid
+
+### 10. Invalid TeleBirr phone
+POST http://localhost:3000/api/v1/orders
+Content-Type: application/json
+
+{
+  "restaurantId": 1,
+  "customer": "Hana",
+  "area": "Bole",
+  "teleBirrPhone": "12345",
+  "lines": [
+    {
+      "dishId": 1,
+      "quantity": 1
+    }
+  ]
+}
+
+### 11. Empty order lines
+POST http://localhost:3000/api/v1/orders
+Content-Type: application/json
+
+{
+  "restaurantId": 1,
+  "customer": "Hana",
+  "area": "Bole",
+  "lines": []
+}
+
+### 12. Invalid order status update
+PATCH http://localhost:3000/api/v1/orders/1/status
+Content-Type: application/json
+
+{
+  "status": "Invalid"
+}
