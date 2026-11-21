@@ -1,0 +1,756 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/v1": {
+      "get": {
+        "operationId": "AppController_getHello",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Welcome message returned."
+          }
+        },
+        "summary": "Get API welcome message",
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/api/v1/restaurants/open": {
+      "get": {
+        "operationId": "RestaurantsController_findOpen",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Open restaurants returned."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Get open restaurants",
+        "tags": [
+          "Restaurants"
+        ]
+      }
+    },
+    "/api/v1/restaurants": {
+      "get": {
+        "operationId": "RestaurantsController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Restaurants returned."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Get all restaurants",
+        "tags": [
+          "Restaurants"
+        ]
+      },
+      "post": {
+        "operationId": "RestaurantsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRestaurantDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Restaurant created."
+          },
+          "400": {
+            "description": "Invalid restaurant input."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Create a restaurant",
+        "tags": [
+          "Restaurants"
+        ]
+      }
+    },
+    "/api/v1/restaurants/{id}": {
+      "get": {
+        "operationId": "RestaurantsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Restaurant returned."
+          },
+          "400": {
+            "description": "Restaurant ID must be an integer."
+          },
+          "404": {
+            "description": "Restaurant does not exist."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Get a restaurant by ID",
+        "tags": [
+          "Restaurants"
+        ]
+      },
+      "delete": {
+        "operationId": "RestaurantsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Restaurant deleted."
+          },
+          "400": {
+            "description": "Restaurant ID must be an integer."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Delete a restaurant",
+        "tags": [
+          "Restaurants"
+        ]
+      }
+    },
+    "/api/v1/orders": {
+      "get": {
+        "operationId": "OrderController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Orders returned."
+          },
+          "400": {
+            "description": "Invalid filter or pagination query."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Get orders with filtering and pagination",
+        "tags": [
+          "Orders"
+        ]
+      },
+      "post": {
+        "operationId": "OrderController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Order created."
+          },
+          "400": {
+            "description": "Invalid order input."
+          },
+          "404": {
+            "description": "Restaurant or dish does not exist."
+          },
+          "409": {
+            "description": "Restaurant is inactive."
+          },
+          "422": {
+            "description": "Dish does not belong to the selected restaurant."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Create an order",
+        "tags": [
+          "Orders"
+        ]
+      }
+    },
+    "/api/v1/orders/pending": {
+      "get": {
+        "operationId": "OrderController_findPending",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Pending orders returned."
+          },
+          "400": {
+            "description": "Invalid pagination query."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Get pending orders with pagination",
+        "tags": [
+          "Orders"
+        ]
+      }
+    },
+    "/api/v1/orders/health-check": {
+      "get": {
+        "operationId": "OrderController_healthCheck",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "API is healthy."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Check API health",
+        "tags": [
+          "Orders"
+        ]
+      }
+    },
+    "/api/v1/orders/{id}": {
+      "get": {
+        "operationId": "OrderController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order returned."
+          },
+          "400": {
+            "description": "Order ID must be an integer."
+          },
+          "404": {
+            "description": "Order does not exist."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Get an order by ID",
+        "tags": [
+          "Orders"
+        ]
+      },
+      "delete": {
+        "operationId": "OrderController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Order deleted."
+          },
+          "400": {
+            "description": "Order ID must be an integer."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Delete an order",
+        "tags": [
+          "Orders"
+        ]
+      }
+    },
+    "/api/v1/orders/{id}/status": {
+      "patch": {
+        "operationId": "OrderController_updateStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStatusDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Order status updated."
+          },
+          "400": {
+            "description": "Invalid order ID or status."
+          },
+          "404": {
+            "description": "Order does not exist."
+          },
+          "409": {
+            "description": "Status transition is not allowed."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Update an order status",
+        "tags": [
+          "Orders"
+        ]
+      }
+    },
+    "/api/v1/dishes": {
+      "get": {
+        "operationId": "DishesController_findAll",
+        "parameters": [
+          {
+            "name": "restaurantId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dishes returned."
+          },
+          "400": {
+            "description": "Invalid restaurantId query parameter."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Get dishes, optionally filtered by restaurant",
+        "tags": [
+          "Dishes"
+        ]
+      },
+      "post": {
+        "operationId": "DishesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDishDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Dish created."
+          },
+          "400": {
+            "description": "Invalid dish input."
+          },
+          "422": {
+            "description": "Restaurant reference is invalid."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Create a dish",
+        "tags": [
+          "Dishes"
+        ]
+      }
+    },
+    "/api/v1/dishes/{id}": {
+      "get": {
+        "operationId": "DishesController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dish returned."
+          },
+          "400": {
+            "description": "Dish ID must be an integer."
+          },
+          "404": {
+            "description": "Dish does not exist."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Get a dish by ID",
+        "tags": [
+          "Dishes"
+        ]
+      },
+      "delete": {
+        "operationId": "DishesController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Dish deleted."
+          },
+          "400": {
+            "description": "Dish ID must be an integer."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Delete a dish",
+        "tags": [
+          "Dishes"
+        ]
+      }
+    },
+    "/api/v1/restaurants/{id}/dishes": {
+      "get": {
+        "operationId": "RestaurantDishesController_findByRestaurant",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Restaurant dishes returned."
+          },
+          "400": {
+            "description": "Restaurant ID must be an integer."
+          },
+          "404": {
+            "description": "Restaurant does not exist."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Get dishes for a restaurant",
+        "tags": [
+          "Dishes"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Addis Eats API",
+    "description": "HTTP API for discovering restaurants and dishes, creating food orders, and managing order status. Prices are represented in Ethiopian santim.",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "tags": [
+    {
+      "name": "Restaurants",
+      "description": "Browse and manage restaurants."
+    },
+    {
+      "name": "Dishes",
+      "description": "Browse and manage restaurant dishes."
+    },
+    {
+      "name": "Orders",
+      "description": "Create, query and manage customer orders."
+    },
+    {
+      "name": "System",
+      "description": "API welcome and service metadata."
+    }
+  ],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "api-key": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "description": "API key header"
+      }
+    },
+    "schemas": {
+      "CreateRestaurantDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Habesha Restaurant"
+          },
+          "address": {
+            "type": "string",
+            "example": "Bole, Addis Ababa"
+          },
+          "phone": {
+            "type": "string",
+            "example": "+251911234567"
+          }
+        },
+        "required": [
+          "name",
+          "address"
+        ]
+      },
+      "OrderLineDto": {
+        "type": "object",
+        "properties": {
+          "dishId": {
+            "type": "number",
+            "example": 1,
+            "description": "ID of a dish belonging to the selected restaurant."
+          },
+          "quantity": {
+            "type": "number",
+            "example": 2,
+            "minimum": 1
+          }
+        },
+        "required": [
+          "dishId",
+          "quantity"
+        ]
+      },
+      "CreateOrderDto": {
+        "type": "object",
+        "properties": {
+          "restaurantId": {
+            "type": "number",
+            "example": 1,
+            "minimum": 1
+          },
+          "customer": {
+            "type": "string",
+            "example": "Abebe Kebede"
+          },
+          "area": {
+            "enum": [
+              "Bole",
+              "Kazanchis",
+              "Piazza",
+              "Mexico",
+              "Sarbet"
+            ],
+            "type": "string",
+            "example": "Bole"
+          },
+          "teleBirrPhone": {
+            "type": "string",
+            "example": "+251911234567",
+            "description": "TeleBirr phone number."
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderLineDto"
+            }
+          }
+        },
+        "required": [
+          "restaurantId",
+          "customer",
+          "area",
+          "lines"
+        ]
+      },
+      "UpdateStatusDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "enum": [
+              "Pending",
+              "Confirmed",
+              "Preparing",
+              "Ready",
+              "Delivered",
+              "Cancelled"
+            ],
+            "type": "string",
+            "example": "Confirmed"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "CreateDishDto": {
+        "type": "object",
+        "properties": {
+          "restaurantId": {
+            "type": "number",
+            "example": 1,
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Doro Wot"
+          },
+          "priceSantim": {
+            "type": "number",
+            "example": 12500,
+            "minimum": 1,
+            "description": "Price in santim."
+          }
+        },
+        "required": [
+          "restaurantId",
+          "name",
+          "priceSantim"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+### Redaction proof: all three sensitive values are in one request
+POST http://localhost:3000/api/v1/restaurants
+Content-Type: application/json
+Authorization: Bearer auth-secret-demo
+x-api-key: api-secret-demo
+
+{
+  "name": "Day 60 Redaction Check",
+  "address": "Bole, Addis Ababa",
+  "phone": "+251911234567"
+}
+
+### Request-ID proof and real order creation
+POST http://localhost:3000/api/v1/orders
+Content-Type: application/json
+X-Request-Id: day60-order-check-001
+
+{
+  "restaurantId": 1,
+  "customer": "Day 60 Test",
+  "area": "Bole",
+  "teleBirrPhone": "+251911234567",
+  "lines": [
+    { "dishId": 1, "quantity": 1 }
+  ]
+}
