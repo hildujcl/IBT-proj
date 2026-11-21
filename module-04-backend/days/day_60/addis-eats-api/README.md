@@ -1,121 +1,64 @@
-# Day 58 – Addis Eats API
+# Day 60 – Logging & API Documentation
 
-A REST API built with **NestJS and TypeScript** for managing restaurants, dishes, and customer orders.
+Today, I worked on improving my Addis Eats API by implementing structured logging and API documentation using NestJS.
 
-The project uses API versioning, manual validation, standardized error responses, and in-memory repositories.
+## What I Worked On
 
-## Technologies
+### 1. Structured Logging
 
-- Node.js
+- Integrated Pino for structured logging.
+- Configured logging levels using the `LOG_LEVEL` environment variable.
+- Enabled readable, pretty-printed logs in development.
+- Added request IDs to track incoming requests.
+- Used AsyncLocalStorage to access request IDs in service logs without passing them as method arguments.
+- Configured sensitive data redaction for authorization headers, API keys, and phone fields.
+
+### 2. Swagger API Documentation
+
+- Integrated Swagger using `@nestjs/swagger`.
+- Configured Swagger documentation at `/docs`.
+- Added summaries to API endpoints.
+- Organized endpoints using resource tags.
+- Documented API response status codes.
+- Added API key authentication documentation.
+- Exported the OpenAPI specification as `openapi.json`.
+- Disabled Swagger documentation in production.
+
+## Technologies Used
+
 - NestJS
 - TypeScript
-- REST API
-- npm
-- HTTP status codes
-- Manual request validation
+- Pino
+- Pino HTTP
+- Swagger / OpenAPI
+- AsyncLocalStorage
 
-## Features
+## How to Run
 
-### Restaurants
+Install dependencies:
 
-- Retrieve all restaurants
-- Retrieve one restaurant
-- Retrieve open restaurants
-- Create restaurants
-- Delete restaurants
+```bash
+npm install
+```
 
-### Dishes
+Start the development server:
 
-- Retrieve all dishes
-- Retrieve one dish
-- Filter dishes by restaurant
-- Create dishes
-- Delete dishes
-- Validate restaurant references
+```bash
+npm run start:dev
+```
 
-### Orders
-
-- Create orders with multiple dish lines
-- Calculate order totals on the server
-- Calculate delivery fees
-- Filter orders by status and delivery area
-- Sort orders
-- Paginate order collections
-- Retrieve pending orders
-- Retrieve orders by restaurant
-- Update order status
-- Validate order status transitions
-- Delete orders
-
-### API standards
-
-- API versioning using `/api/v1`
-- Standardized error responses
-- Centralized exception handling
-- Request ID support
-- Consistent HTTP status codes
-- Location header for successful resource creation
-- Idempotent DELETE operations
-- Manual DTO validation
-
-## Project Structure
+Open Swagger documentation:
 
 ```text
-addis-eats-api/
-├── src/
-│   ├── common/
-│   │   ├── filters/
-│   │   │   └── all-exceptions.filter.ts
-│   │   └── validators/
-│   │       ├── telebirr.validator.ts
-│   │       └── santim.validator.ts
-│   │
-│   ├── restaurants/
-│   │   ├── dto/
-│   │   ├── restaurants.controller.ts
-│   │   ├── restaurants.module.ts
-│   │   ├── restaurants.repository.ts
-│   │   ├── restaurants.service.ts
-│   │   ├── restaurants.seed.ts
-│   │   └── restaurants.types.ts
-│   │
-│   ├── dishes/
-│   │   ├── dto/
-│   │   ├── dishes.controller.ts
-│   │   ├── dishes.module.ts
-│   │   ├── dish.repository.ts
-│   │   ├── dish.errors.ts
-│   │   ├── dishes.service.ts
-│   │   ├── dishes.seed.ts
-│   │   └── dish.types.ts
-│   │
-│   ├── order/
-│   │   ├── dto/
-│   │   │   ├── create-order.dto.ts
-│   │   │   ├── find-orders.query.ts
-│   │   │   └── update-status.dto.ts
-│   │   ├── order.controller.ts
-│   │   ├── order.errors.ts
-│   │   ├── order.module.ts
-│   │   ├── order.repository.ts
-│   │   ├── order.service.ts
-│   │   ├── order.types.ts
-│   │   └── seed-orders.ts
-│   │
-│   ├── app.controller.ts
-│   ├── app.module.ts
-│   ├── app.service.ts
-│   └── main.ts
-│
-├── docs/
-│   └── api-standard.md
-│
-├── test/
-│   ├── requests.http
-│   ├── expected.md
-│   └── run-all.sh
-│
-├── package.json
-├── package-lock.json
-└── tsconfig.json
+http://localhost:3000/docs
 ```
+
+Export OpenAPI documentation:
+
+```bash
+npm run openapi:export
+```
+
+## What I Learned
+
+Day 60 helped me understand how structured logging makes debugging and request tracking easier, how to protect sensitive information in logs, and how Swagger and OpenAPI make API documentation easier to understand and maintain.
